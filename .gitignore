@@ -1,0 +1,10 @@
+# Terraform files
+.terraform*
+*.tfplan
+*.tfstate*
+
+# NodeJS
+**/node_modules
+
+# Build
+**/dist

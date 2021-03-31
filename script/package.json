@@ -1,0 +1,28 @@
+{
+  "name": "script",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "NODE_ENV=production rollup -c rollup.config.js",
+    "postbuild": "node tools/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@adobe/target-nodejs-sdk": "^2.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-transform-regenerator": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "@rollup/plugin-commonjs": "^11.0.1",
+    "@rollup/plugin-json": "^4.0.1",
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "core-js": "^3.6.5",
+    "rimraf": "^3.0.2",
+    "rollup": "^1.17.0",
+    "rollup-plugin-babel": "^4.3.3"
+  }
+}
