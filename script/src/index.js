@@ -6,9 +6,9 @@ const createTargetClient = () => {
     const result = TargetClient.create({
       client: "targettesting",
       organizationId: "74F652E95F1B16FE0A495C92@AdobeOrg",
-      logger: console,
       decisioningMethod: "on-device",
       artifactPayload: RULES,
+      logger: console,
       events: {
         clientReady: () => resolve(result)
       }

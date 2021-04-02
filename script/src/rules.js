@@ -6947,4 +6947,4 @@ export default {
       ]
     }
   }
-}
+};

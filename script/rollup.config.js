@@ -11,13 +11,11 @@ governing permissions and limitations under the License.
 */
 
 import resolve from "@rollup/plugin-node-resolve";
-import json from "@rollup/plugin-json";
 import commonjs from "@rollup/plugin-commonjs";
 import babel from "rollup-plugin-babel";
 
 function getPlugins(babelConfig) {
   return [
-    json(),
     resolve({browser: true}),
     commonjs(),
     babel(babelConfig)
@@ -28,9 +26,13 @@ export default [
   {
     input: "src/index.js",
     output: {
-      name: "TargetClient",
+      // In Cloudflare Worker environment "self" is similar to "window"
+      // We have to create a dummy "window" variable to make sure the
+      // Rollup bundle works as expected
+      banner: `var window = self;`,
+      name: "index",
       file: "dist/index.js",
-      format: "iife",
+      format: "esm",
       sourcemap: true
     },
     plugins: getPlugins(
