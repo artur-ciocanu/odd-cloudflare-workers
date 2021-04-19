@@ -10,9 +10,12 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 
+import * as fs from "fs";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import babel from "rollup-plugin-babel";
+
+const BANNER = fs.readFileSync("./src/banner.js").toString();
 
 function getPlugins(babelConfig) {
   return [
@@ -26,10 +29,7 @@ export default [
   {
     input: "src/index.js",
     output: {
-      // In Cloudflare Worker environment "self" is similar to "window"
-      // We have to create a dummy "window" variable to make sure the
-      // Rollup bundle works as expected
-      banner: `var window = self;`,
+      banner: BANNER,
       name: "index",
       file: "dist/index.js",
       format: "esm",
